@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Alexa skill to get the TFL status",
   "main": "index.js",
-  "scripts":{
+  "scripts": {
     "test": "jest",
     "precommit": "lint-staged"
   },
@@ -12,15 +12,18 @@
   "license": "MIT",
   "dependencies": {
     "alexa-sdk": "^1.0.11",
+    "superagent": "^3.5.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --no-semi --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
     "husky": "^0.14.3",
     "jest": "^20.0.4",
     "lint-staged": "^4.0.2",
     "prettier": "^1.5.3"
-  },
-  "lint-staged": {
-    "*.js": [
-        "prettier --single-quote --no-semi --write",
-        "git add"
-      ]
   }
 }
