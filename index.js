@@ -1,4 +1,5 @@
 const Alexa = require('alexa-sdk')
+const alexaActions = require('./src/alexaActions')
 
 const APP_ID = undefined
 
@@ -13,10 +14,10 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
   LaunchRequest: function() {
-    this.emit('GetNewFactIntent')
+    this.emit('GetTflTrainStatusIntent')
   },
   GetTflTrainStatusIntent: function() {
-    const status = 'bad'
+    const status = alexaActions.getTflTrainStatus()
     this.emit(':tellWithCard', status, SKILL_NAME, status)
   }
 }
