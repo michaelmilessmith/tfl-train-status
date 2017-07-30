@@ -39,10 +39,22 @@ const responseBody = [
 ]
 
 describe('getTflTrainDisruption', () => {
-  it('returns the status of the tfl trains', () => {
+  beforeEach(() => {
+    jest.resetAllMocks()
+  })
+  it('returns the status of the tfl trains', async () => {
     request.get.mockReturnValue(requestMock)
     requestMock.query.mockReturnValue(Promise.resolve({ body: responseBody }))
 
-    return expect(getTflTrainDisruption()).resolves.toBe(responseBody)
+    await expect(getTflTrainDisruption()).resolves.toBe(responseBody)
+    expect(request.get).toHaveBeenCalledTimes(1)
+    expect(request.get).toHaveBeenCalledWith(
+      'https://api.tfl.gov.uk/Line/Mode/tube/Disruption'
+    )
+    expect(requestMock.query).toHaveBeenCalledTimes(1)
+    expect(requestMock.query).toHaveBeenCalledWith({
+      app_id: process.env.TFL_APP_ID,
+      app_key: process.env.TFL_APP_KEY
+    })
   })
 })
