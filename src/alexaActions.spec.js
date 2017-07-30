@@ -34,9 +34,11 @@ const getTflTrainDisruptionResponse = [
 ]
 
 describe('getTflTrainStatus', () => {
-  it('returns the status of the TFL train network in a human readable format', () => {
-    getTflTrainDisruption.mockReturnValue(getTflTrainDisruptionResponse)
-    expect(getTflTrainStatus()).toBe(
+  it('returns the status of the TFL train network in a human readable format', async () => {
+    getTflTrainDisruption.mockReturnValue(
+      Promise.resolve(getTflTrainDisruptionResponse)
+    )
+    await expect(getTflTrainStatus()).resolves.toBe(
       'Northern Line: MINOR DELAYS between Camden Town and Kennington via Charing Cross due to a signal failure at Kennington. Waterloo and City Line: The service will resume again at 0615 tomorrow. '
     )
     expect(getTflTrainDisruption).toHaveBeenCalledTimes(1)

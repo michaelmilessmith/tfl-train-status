@@ -1,9 +1,9 @@
 const { getTflTrainDisruption } = require('./tflCalls')
 
-const getTflTrainStatus = () => {
-  const response = getTflTrainDisruption()
-  return response.map(disruption => disruption.description).join('')
-}
+const getTflTrainStatus = () =>
+  getTflTrainDisruption().then(res =>
+    res.map(disruption => disruption.description).join('')
+  )
 
 module.exports = {
   getTflTrainStatus
