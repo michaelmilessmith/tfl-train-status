@@ -3,7 +3,24 @@
   "version": "0.1.0",
   "description": "Alexa skill to get the TFL status",
   "main": "index.js",
+  "scripts":{
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
   "repository": "git@github.com:michaelmilessmith/tfl-train-status.git",
   "author": "Michael Smith <MichaelMilesSmith@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "alexa-sdk": "^1.0.11",
+    "husky": "^0.14.3",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3"
+  },
+  "lint-staged": {
+    "*.js": [
+        "prettier --single-quote --no-semi --write",
+        "git add"
+      ]
+  }
 }
