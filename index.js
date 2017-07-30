@@ -17,7 +17,8 @@ const handlers = {
     this.emit('GetTflTrainStatusIntent')
   },
   GetTflTrainStatusIntent: function() {
-    const status = alexaActions.getTflTrainStatus()
-    this.emit(':tellWithCard', status, SKILL_NAME, status)
+    alexaActions.getTflTrainStatus().then(res => {
+      this.emit(':tellWithCard', res, SKILL_NAME, res)
+    })
   }
 }
