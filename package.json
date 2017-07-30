@@ -1,0 +1,9 @@
+{
+  "name": "tfl-train-status",
+  "version": "0.1.0",
+  "description": "Alexa skill to get the TFL status",
+  "main": "index.js",
+  "repository": "git@github.com:michaelmilessmith/tfl-train-status.git",
+  "author": "Michael Smith <MichaelMilesSmith@gmail.com>",
+  "license": "MIT"
+}
